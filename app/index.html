@@ -62,7 +62,7 @@
             <tr ng-repeat="todo in tasksUrgent">
                 <td><font color="red">{{todo.tache}}</font></td>
                 <td>{{todo.types}}</td>
-                <td>{{todo.jour}}-{{todo.mois}}-{{todo.annee}}</td>
+                <td>{{todo.date | date:'dd-MM-yyyy'}}</td>
                 <td>{{todo.deadline}}</td>
                 <td><input type="checkbox" ng-model="checkDone" ng-true-value="Done!" ng-false-value=""/>{{checkDone}}</td>
                 <td><input type="checkbox" ng-model="removeLine" ng-true-value="1" ng-false-value="0" ng-change="taskChecked($index, todo.types, removeLine)"></td>
@@ -77,7 +77,7 @@
             <tr ng-repeat="todo in tasksNormal">
                 <td><font color="orange">{{todo.tache}}</font></td>
                 <td>{{todo.types}}</td>
-                <td>{{todo.jour}}-{{todo.mois}}-{{todo.annee}}</td>
+                <td>{{todo.date | date:'dd-MM-yyyy'}}</td>
                 <td>{{todo.deadline}}</td>
                 <td><input type="checkbox" ng-model="checkDone" ng-true-value="Done!" ng-false-value=""/>{{checkDone}}</td>
                 <td><input type="checkbox" ng-model="removeLine" ng-true-value="1" ng-false-value="0" ng-change="taskChecked($index, todo.types, removeLine)"></td>
@@ -90,7 +90,7 @@
             <tr ng-repeat="todo in tasksSecondaire">
                 <td><font color="green">{{todo.tache}}</font></td>
                 <td>{{todo.types}}</td>
-                <td>{{todo.jour}}-{{todo.mois}}-{{todo.annee}}</td>
+                <td>{{todo.date | date:'dd-MM-yyyy'}}}</td>
                 <td>{{todo.deadline}}</td>
                 <td><input type="checkbox" ng-model="checkDone" ng-true-value="Done!" ng-false-value=""/>{{checkDone}}</td>
                 <td><input type="checkbox" ng-model="removeLine" ng-true-value="1" ng-false-value="0" ng-change="taskChecked($index, todo.types, removeLine)"></td>

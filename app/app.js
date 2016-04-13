@@ -40,8 +40,7 @@ angular.module('myApp', [])
             //$scope.tasks.premier.push(task);
            // $scope.tasks.second.push(type);
             if($scope.type=="urgent"){
-                $scope.tasksUrgent.push({tache:$scope.task, types:$scope.type, jour:$scope.selectedD, mois:$scope.selectedM,
-                    annee:$scope.selectedY, deadline:$scope.dateLimite, taskDone:$scope.done});
+                $scope.tasksUrgent.push({tache:$scope.task, types:$scope.type, date:$scope.mydate, deadline:$scope.dateLimite, taskDone:$scope.done});
                 $scope.task=' ';
                 $scope.type=' ';
             }
