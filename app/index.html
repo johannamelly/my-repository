@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html ng-app="myApp" xmlns="http://www.w3.org/1999/html">
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.14/angular.js"></script>
+    <script src="bower_components/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
+  </head>
+  <body>
+  <div ng-app="myApp">
+
+    <ul class="nav navbar-nav">
+      <li><a href="#/view1">View1</a></li>
+      <li><a href="#/view2">View2</a></li>
+    </ul>
+    <div><div ng-view></div></div>
+
+
+    <div ng-controller="MyController">
+      <input ng-model="task" name="task" type="text" placeholder="Task">
+      <button class="btn btn-primary" type="submit" ng-click="addTask()"> Ajouter </button></br>
+      <form>
+        <input type="radio" value="urgent" ng-model="type"> urgent</input><br>
+        <input type="radio" value="normal" ng-model="type"> normal</input><br>
+        <input type="radio" value="secondaire" ng-model="type"> secondaire</input>
+      </form>
+      <p>Date: </p>
+      <select ng-model="selectedD" ng-options="choice for choice in date.day"></select>
+      <select ng-model="selectedM" ng-options="choice for choice in date.month"></select>
+      <select ng-model="selectedY" ng-options="choice for choice in date.year"></select>
+
+        <!-- <td><input type="checkbox" ng-model="ttt" ng-true-value="1" ng-checked="checkbox==1" ng-click="checkTest()"/></td>
+        {{ttt}} -->
+
+       <!-- <p>Testid: {{selectedM.id}}</p> -->
+
+      <h1>To do: {{ task }}</h1>
+        <table border="1">
+            <tr>
+                <td>Tâche</td>
+                <td>Priorité</td>
+                <td>Deadline</td>
+                <td> </td>
+                <td>Done?</td>
+                <td>Select</td>
+                <td>Delete</td>
+                <td>Changer priorité</td>
+            </tr>
+            <!-- <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <input type="checkbox" ng-model="selectAll" ng-true-value="1" ng-false-value="0" ng-change="checkAll(selectAll, removeLine)"/>
+                </td>
+                <td></td>
+            </tr>
+            -->
+            <tr ng-repeat="todo in tasksUrgent">
+                <td><font color="red">{{todo.tache}}</font></td>
+                <td>{{todo.types}}</td>
+                <td>{{todo.jour}}-{{todo.mois}}-{{todo.annee}}</td>
+                <td>{{todo.deadline}}</td>
+                <td><input type="checkbox" ng-model="checkDone" ng-true-value="Done!" ng-false-value=""/>{{checkDone}}</td>
+                <td><input type="checkbox" ng-model="removeLine" ng-true-value="1" ng-false-value="0" ng-change="taskChecked($index, todo.types, removeLine)"></td>
+                <td><input type="button" value="Delete" ng-model="delete" ng-click="deleteTask($index,todo.types)"/>
+                <td>
+                    <select ng-model="selectedType" ng-options="choice for choice in newtype"></select>
+                    <input type="button" value="Ok" ng-model="change" ng-click="changeType($index,todo.types,selectedType)"/>
+                </td>
+
+
+            </tr>
+            <tr ng-repeat="todo in tasksNormal">
+                <td><font color="orange">{{todo.tache}}</font></td>
+                <td>{{todo.types}}</td>
+                <td>{{todo.jour}}-{{todo.mois}}-{{todo.annee}}</td>
+                <td>{{todo.deadline}}</td>
+                <td><input type="checkbox" ng-model="checkDone" ng-true-value="Done!" ng-false-value=""/>{{checkDone}}</td>
+                <td><input type="checkbox" ng-model="removeLine" ng-true-value="1" ng-false-value="0" ng-change="taskChecked($index, todo.types, removeLine)"></td>
+                <td><input type="button" value="Delete" ng-model="delete" ng-click="deleteTask($index,todo.types)"/></td>
+                <td>
+                    <select ng-model="selectedType" ng-options="choice for choice in newtype"></select>
+                    <input type="button" value="Ok" ng-model="change" ng-click="changeType($index,todo.types,selectedType)"/>
+                </td>
+            </tr>
+            <tr ng-repeat="todo in tasksSecondaire">
+                <td><font color="green">{{todo.tache}}</font></td>
+                <td>{{todo.types}}</td>
+                <td>{{todo.jour}}-{{todo.mois}}-{{todo.annee}}</td>
+                <td>{{todo.deadline}}</td>
+                <td><input type="checkbox" ng-model="checkDone" ng-true-value="Done!" ng-false-value=""/>{{checkDone}}</td>
+                <td><input type="checkbox" ng-model="removeLine" ng-true-value="1" ng-false-value="0" ng-change="taskChecked($index, todo.types, removeLine)"></td>
+                <td><input type="button" value="Delete" ng-model="delete" ng-click="deleteTask($index,todo.types)"/></td>
+                <td>
+                    <select ng-model="selectedType" ng-options="choice for choice in newtype"></select>
+                    <input type="button" value="Ok" ng-model="change" ng-click="changeType($index,todo.types,selectedType)"/>
+                </td>
+            </tr>
+        </table>
+        <div ng-repeat="taches in checkTask"></div>
+        {{taches.numero}} {{taches.type}}
+        {{test}}
+        WWWWW
+        {{test2}}
+        combien
+        {{iteration}}
+        <td><input type="button" value="Remove" ng-model="remove" ng-click="removeTask()"/></td>
+        <!-- <td><input type="button" Value="Done!" nd-model="selectedDone" ng-click="allDone()"/></td> -->
+    </div>
+
+
+
+  </div>
+  <script src="bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/angular-route/angular-route.js"></script>
+  <script type="text/javascript" src="app.js"></script>
+  <script src="view1/view1.js"></script>
+  <script src="view2/view2.js"></script>
+  <script src="components/version/version.js"></script>
+  <script src="components/version/version-directive.js"></script>
+  <script src="components/version/interpolate-filter.js"></script>
+  </body>
+</html>
