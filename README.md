@@ -29,7 +29,6 @@ e2e-tests/            --> end-to-end tests
   protractor-conf.js    --> Protractor config file
   scenarios.js          --> end-to-end scenarios to be run by Protractor
 ```
-
 ## Testing
 
 There are two kinds of tests in the angular-seed application: Unit tests and End to End tests.
